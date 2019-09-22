@@ -3,23 +3,29 @@ package com.train
 import java.util.*
 
 fun main() {
-    // scan total ticket count
-    print("Please enter number of tickets: ")
-    val scanner = Scanner(System.`in`)
-    val totalCount = scanner.nextInt()
+    var totalCount = 0
 
-    // scan round-trip ticket count
-    print("How many round-trip tickets: ")
-    val roundTripCount = scanner.nextInt()
+    while (totalCount > -1) {
+        // scan total ticket count
+        print("Please enter number of tickets: ")
+        val scanner = Scanner(System.`in`)
+        totalCount = scanner.nextInt()
 
-    // calculate one-way ticket count
-    val oneWayCount = totalCount - roundTripCount
+        if (totalCount > 0) {
+            // scan round-trip ticket count
+            print("How many round-trip tickets: ")
+            val roundTripCount = scanner.nextInt()
 
-    // generate order
-    val order = OrderKotlin(oneWayCount, roundTripCount)
+            // calculate one-way ticket count
+            val oneWayCount = totalCount - roundTripCount
 
-    // print receipt
-    order.printReceipt()
+            // generate order
+            val order = OrderKotlin(oneWayCount, roundTripCount)
+
+            // print receipt
+            order.printReceipt()
+        }
+    }
 }
 
 class OrderKotlin(var ticketCountOfOneWay: Int, var ticketCountOfRoundTrip: Int) {

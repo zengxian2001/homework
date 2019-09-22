@@ -4,22 +4,28 @@ import java.util.Scanner;
 
 public class Tester {
     public static void main(String[] args) {
-        // scan total ticket count
-        System.out.print("Please enter number of tickets: ");
-        Scanner scanner = new Scanner(System.in);
-        int totalCount = scanner.nextInt();
+        int totalCount = 0;
 
-        // scan round-trip ticket count
-        System.out.print("How many round-trip tickets: ");
-        int roundTripCount = scanner.nextInt();
+        while (totalCount != -1) {
+            // scan total ticket count
+            System.out.print("Please enter number of tickets: ");
+            Scanner scanner = new Scanner(System.in);
+            totalCount = scanner.nextInt();
 
-        // calculate one-way ticket count
-        int oneWayCount = totalCount - roundTripCount;
+            if (totalCount > 0) {
+                // scan round-trip ticket count
+                System.out.print("How many round-trip tickets: ");
+                int roundTripCount = scanner.nextInt();
 
-        // generate order
-        Order order = new Order(oneWayCount, roundTripCount);
+                // calculate one-way ticket count
+                int oneWayCount = totalCount - roundTripCount;
 
-        // print receipt
-        order.printReceipt();
+                // generate order
+                Order order = new Order(oneWayCount, roundTripCount);
+
+                // print receipt
+                order.printReceipt();
+            }
+        }
     }
 }
